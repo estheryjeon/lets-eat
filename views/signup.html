@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Let's Eat</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1 id="headings">Sign Up</h1>
+    <form method="post">
+      <p>Email<br>
+      <input type="text" name="email"></p>
+      <p>Username<br>
+      <input type="text" name="username"></p>
+      <p>Password<br>
+      <input type="password" name="password"></p>
+      <p>Age<br>
+      <input type="text" name="age"></p>
+      <p>Location<br>
+      <input type="text" name="location"></p>
+      <p>Cuisine<br>
+        <select name="cuisine" size="5" multiple>
+          <option value="italian">Italian</option>
+          <option value="chinese">Chinese</option>
+          <option value="mediterranean">Mediterranean</option>
+          <option value="mexican">Mexican</option>
+          <option value="american">American</option>
+        </select>
+      </p>
+      <p id="navbar"><input value="Next" type="submit"></p>
+    </form>
+
+  </div>
+
+</body>
+
+</html>

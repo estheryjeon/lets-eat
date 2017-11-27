@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,800,900');
+
+body {
+  font-family: "Muli", sans-serif;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+form {
+  padding-top: 2em;
+}
+
+button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#matches {
+  padding-top: 2em;
+}
+
+#headings {
+  font-size: 3em;
+  padding-top: 2em;
+  font-weight: bold;
+}
+
+#userName {
+  font-size: 2em;
+  padding-top: 5em;
+  font-weight: bold;
+}
+
+#userInfo {
+  display: block;
+  margin: auto;
+}
+
+#restName {
+  font-size: 2em;
+  padding-top: 5em;
+  font-weight: bold;
+}
+
+#restInfo {
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
+
+#navbar {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}

@@ -1,0 +1,11 @@
+{
+  "name": "lets-eat",
+  "version": "1.0.0",
+  "description": "App that let's you explore restaurants with people.",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Yaeeun Jeon",
+  "license": "ISC"
+}
