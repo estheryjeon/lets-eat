@@ -5,14 +5,14 @@ to run : clone repository, run mongod & node app.js
 
 used : Node.js, Express.js, MongoDB, Yelp API
 
-current features :
+# current features :
 x sign in / sign out
 x sign up
 x save restaurant
 x generate random restaurant
 x find matches
 
-future features :
+# future features :
 x generate random restaurant directly from yelp api
 x update profile
 x upload photos
