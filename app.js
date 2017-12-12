@@ -1,6 +1,15 @@
 var express = require('express');
-
 var app = express();
+/*var http = require('http');
+var io = require('socket.io');
+
+var requestListener = function (request, response) {
+  response.writeHead(200);
+  response.end('Hello, World!\n');
+};
+
+var server = http.createServer(requestListener);
+var socketServer = io(server);*/
 
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
@@ -11,11 +20,12 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname + '/public'));
 
 app.use(cookieSession({
-  secret: 'SHHisASecret'
+  secret: 'secret'
 }));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', function (req, res) {
   if (req.session.email && req.session.email !== '') {
@@ -53,6 +63,7 @@ app.get('/signup', function (req, res) {
 app.post('/signup', function (req, res) {
   User.addUser(req.body.email, req.body.username, req.body.password,
       req.body.age, req.body.location, req.body.bio, req.body.cuisine,
+      req.body.photo,
       function (error) {
     if (error) res.send(error);
     else res.redirect('/home');
@@ -97,13 +108,28 @@ app.get('/getLiked', function (req, res, next) {
   });
 });
 
-app.get('/profile/:email', function (req, res, next) {
-  var email = req.params.email;
-  User.getUser(email, function (error, user) {
+app.get('/getProfile', function (req, res, next) {
+  User.getUser(req.session.email, function (error, user) {
     if (error) {
       console.log(error);
     } else {
       res.json(user);
+    }
+  });
+});
+
+app.post('/updateProfile', function (req, res, next) {
+  console.log(req.body);
+  var name = req.body.name;
+  var age = req.body.age;
+  var location = req.body.location;
+  var bio = req.body.bio;
+  User.updateUser(req.session.email, name, age, location, bio,
+    function (error) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.send('Saved!');
     }
   });
 });
@@ -129,12 +155,26 @@ app.get('/getMatches', function (req, res, next) {
         if (error) {
           console.log(error);
         } else {
-          res.send(other);
+          res.json(other);
         }
       })
     }
   });
 });
+
+app.get('/matchProfile:name', function (req, res, next) {
+  User.getUserWithName(req.params.name, function (error, user) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(user);
+    }
+  });
+});
+
+app.get('/messages', function (req, res, next) {
+  res.render('messages');
+})
 
 app.set('port', process.env.PORT || 3000);
 
