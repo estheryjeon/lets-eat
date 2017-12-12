@@ -16,9 +16,8 @@
 <body>
 
   <div class="container">
-
+    <h1 id='headings'>Your Matches</h1>
     <div id="matches"></div>
-
     <p id="navbar">
       <a href="/home">Home</a><br>
       <a href="/profile">Profile</a><br>
@@ -26,7 +25,13 @@
       <a href="/liked">Matches</a><br>
       <a href="/signout">Sign Out</a>
     </p>
-
+    <div id="matchModal" class="modal">
+      <div class="modal-content">
+        <div id="userInfo"></div>
+        <button id="chat">Send a Message!</button>
+        <span class="close">&times;</span>
+      </div>
+    </div>
   </div>
 
 </body>
