@@ -25,7 +25,6 @@ app.use(cookieSession({
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(cors());
 
 app.get('/', function (req, res) {
   if (req.session.email && req.session.email !== '') {
