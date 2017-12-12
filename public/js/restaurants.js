@@ -1,58 +1,72 @@
 $(document).ready(function() {
 
   var restaurants = data[0].businesses;
+  var currName = "";
+  var currRating = "";
+  var currLocation = "";
+  var currCategories = "";
 
-  var randomRest = function () {
-    randomInt = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-    for (var i = 0; i < restaurants.length; i++) {
-      if (i == randomInt) {
-        var name = restaurants[i].name;
-        $("#restName").empty();
-        $("#restName").append(name);
-        $("#restInfo").empty();
-        var rating = restaurants[i].rating;
-        $("#restInfo").append('Rating : ' + rating + '<br>');
-        var location = restaurants[i].location.display_address;
-        $("#restInfo").append('Location : ' + location + '<br>');
-        var categories = restaurants[i].categories[0].title;
-        $("#restInfo").append('Type : ' + categories);
-      }
-    }
+  var theRejects = [];
+  var currRest = 0;
+
+  var getRest = function () {
+    var name = restaurants[currRest].name;
+    $("#restName").empty();
+    $("#restName").append(name);
+    $("#restInfo").empty();
+    var rating = restaurants[currRest].rating;
+    $("#restInfo").append('Rating : ' + rating + '<br>');
+    var location = restaurants[currRest].location.display_address;
+    $("#restInfo").append('Location : ' + location + '<br>');
+    var categories = restaurants[currRest].categories[0].title;
+    $("#restInfo").append('Type : ' + categories);
+    currName = name;
+    currRating = rating;
+    currLocation = location;
+    currCategories = categories;
   }
-
-  randomRest();
+  getRest();
 
   $("#yes").click(function () {
-    randomInt = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-    for (var i = 0; i < restaurants.length; i++) {
-      if (i == randomInt) {
-        var name = restaurants[i].name;
-        $("#restName").empty();
-        $("#restName").append(name);
-        $("#restInfo").empty();
-        var rating = restaurants[i].rating;
-        $("#restInfo").append('Rating : ' + rating + '<br>');
-        var location = restaurants[i].location.display_address;
-        $("#restInfo").append('Location : ' + location + '<br>');
-        var categories = restaurants[i].categories[0].title;
-        $("#restInfo").append('Type : ' + categories);
-        $.ajax({
-          type: "POST",
-          url: "/home",
-          data: {
-            name: name,
-            categories: categories,
-            rating: rating,
-            location: location
-          },
-          dataType: "json"
-        });
+    if (currRest == restaurants.length - 1) {
+      if (theRejects.length == 0) {
+        $("#restName").append("No More Restaurants :(");
       }
+      restaurants = theRejects;
+      theRejects = [];
+      currRest = 0;
+      getRest();
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/home",
+        data: {
+          name: currName,
+          categories: currCategories,
+          rating: currRating,
+          location: currLocation
+        },
+        dataType: "json"
+      });
+      currRest++;
+      getRest();
     }
   });
 
   $("#no").click(function () {
-    randomRest();
+    if (currRest == restaurants.length - 1) {
+      if (theRejects.length == 0) {
+        $("#restName").append("No More Restaurants :(");
+      }
+      restaurants = theRejects;
+      theRejects = [];
+      currRest = 0;
+      getRest();
+    } else {
+      theRejects.push(restaurants[currRest]);
+      currRest++;
+      getRest();
+    }
   });
 
 
