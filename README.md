@@ -11,9 +11,9 @@ x sign up <br>
 x save restaurant <br>
 x update profile <br>
 x find matches <br>
+x view match profiles
 
 future features : <br>
 x generate random restaurant directly from yelp api <br>
 x upload photos <br>
-x matches page with link to profiles <br>
 x chat matches with socketio
