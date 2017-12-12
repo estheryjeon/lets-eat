@@ -10,7 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="js/profile.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 
 <body>
@@ -20,11 +20,22 @@
     <div id="userInfo">
       <h1 id="userName"></h1>
       <p id="info">
-        <p id="age">Age : </p>
-        <p id="location">Location : </p>
+        <p id="age"></p>
+        <p id="location"></p>
       </p>
+      <p id="bio"></p>
     </div>
-
+    <div id="userUpdate">
+      <p><input id="updateName" type="text" value="Update Name"></p>
+      <p><input id="updateAge" type="text" value="Update Age"></p>
+      <p><input id="updateLocation" type="text" value="Update Location"></p>
+      <p><input id="updateBio" type="text" value="Update Bio"></p>
+      <p><input type="file" name="img"></p>
+    </div>
+    <div id="buttons">
+      <button id="update" type="button">Edit Profile</button>
+      <button id="done" type="button">Done</button>
+    </div>
     <p id="navbar">
       <a href="/home">Home</a><br>
       <a href="/profile">Profile</a><br>
