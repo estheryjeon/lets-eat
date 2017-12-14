@@ -62,10 +62,12 @@ app.get('/signup', function (req, res) {
 app.post('/signup', function (req, res) {
   User.addUser(req.body.email, req.body.username, req.body.password,
       req.body.age, req.body.location, req.body.bio, req.body.cuisine,
-      req.body.photo,
       function (error) {
-    if (error) res.send(error);
-    else res.redirect('/home');
+    if (error) {
+      res.send(error);
+    } else {
+      res.redirect('/home');
+    }
   });
 });
 
